@@ -48,6 +48,15 @@ def delete_hero(target_id):
     return jsonify(f"deleted hero id={target_id}"), 200
 
 
+"""ヒーローを検索する"""
+@hero.route('/heroes/', methods=['GET'])
+@cross_origin()
+def search_hero():
+    name = request.args.get('name')
+    result = heroes.search_hero(name)
+    return jsonify(result), 200
+
+
 if __name__ == '__main__':
     heroes = Heroes()
 

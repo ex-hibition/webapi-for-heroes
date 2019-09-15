@@ -1,4 +1,5 @@
 import logging
+import re
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -68,3 +69,11 @@ class Heroes:
                 self.logger.info(f"deleted hero id={target_id}")
 
         self.logger.info(f"heroes={self.heroes}")
+
+    def search_hero(self, name: str):
+        result_list = []
+        for num, rec in enumerate(self.heroes):
+            if re.match(name, rec.get('name')):
+                result_list.append(rec)
+
+        return result_list
