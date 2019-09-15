@@ -60,3 +60,11 @@ class Heroes:
         self.logger.info(f"heroes={self.heroes}")
 
         return hero
+
+    def delete_hero(self, target_id: int):
+        for num, rec in enumerate(self.heroes):
+            if rec.get('id') == target_id:
+                self.heroes.pop(num)
+                self.logger.info(f"deleted hero id={target_id}")
+
+        self.logger.info(f"heroes={self.heroes}")
