@@ -1,8 +1,10 @@
-from flask import Flask, Blueprint, jsonify, request
-from flask_cors import CORS, cross_origin
-from heroes import Heroes
+from flask import Blueprint, jsonify, request
+from flask_cors import cross_origin
+from heroes.heroes import Heroes
 
 hero = Blueprint('hero', __name__)
+
+heroes = Heroes()
 
 """一覧を返す"""
 @hero.route('/heroes', methods=['GET', ])
@@ -55,11 +57,3 @@ def search_hero():
     name = request.args.get('name')
     result = heroes.search_hero(name)
     return jsonify(result), 200
-
-
-if __name__ == '__main__':
-    heroes = Heroes()
-
-    app = Flask(__name__)
-    app.register_blueprint(hero, url_prefix='/angular')
-    app.run(host='0.0.0.0', port=80, debug=True)
