@@ -20,7 +20,7 @@ class Billing:
                     {
                         "201908": [
                             {
-                                "goods": "bill",
+                                "method": "bill",
                                 "price": 2000,
                             },
                         ]
