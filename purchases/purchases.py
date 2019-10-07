@@ -71,4 +71,8 @@ class Purchases:
 
     def get_user_purchases(self, target_id):
         """指定idのデータを返す"""
-        return [x.get(target_id) for x in self.purchases if x.get(target_id)][0]
+        try:
+            return [x.get(target_id) for x in self.purchases if x.get(target_id)][0]
+        except IndexError as e:
+            self.logger.info(f"IndexError: ${e}")
+            return []
